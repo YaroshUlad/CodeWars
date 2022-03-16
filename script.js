@@ -77,8 +77,17 @@ and you have to return the integer n such as n^3 + (n-1)^3 + ... + 1^3 = m
 if such a n exists or -1 if there is no such n.
 */
 
-
 function findNb(m) {
-    // your code
-    return (-1);
+    let summa = 0
+    let int = 0
+    for (var n = 1; summa < m; n++) {
+        int = n
+        summa = summa + (int **= 3)
+        if (summa === m) {
+            return n
+        }
+        if (summa > m) {
+            return -1
+        }
+    }
 }
