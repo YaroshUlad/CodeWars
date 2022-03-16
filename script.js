@@ -21,6 +21,9 @@ It must start with a hashtag (#).
 All words must have their first letter capitalized.
 If the final result is longer than 140 chars it must return false.
 If the input or the result is an empty string it must return false.*/
+
+
+
 /*
 function generateHashtag (str) {
     if(str==""){return false}
@@ -40,7 +43,21 @@ function generateHashtag (str) {
     return hash==='#'?false:hash.length<=140?hash:false
 }
 */
+/*
 function generateHashtag(str) {
     var hashed = '#' + str.split(' ').map(function(v) {return v.charAt(0).toUpperCase() + v.slice(1);}).join('');
     return hashed.length > 140 || str == ""||hashed==="#" ? false : hashed;
   }
+*/
+
+/*
+Implement a function center that takes a string strng, 
+an integer width, and an optional character fill (default: ' ') 
+and returns a new string of length width where strng is centered 
+and on the right and left padded with fill.
+*/
+
+function center (strng, width, fill = ' ') {
+    return '';
+  }
+  
