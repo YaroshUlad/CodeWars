@@ -58,6 +58,6 @@ and on the right and left padded with fill.
 */
 
 function center (strng, width, fill = ' ') {
-    return '';
+    return strng.length>=width?strng:fill.repeat(Math.round((width-strng.length)/2)) + strng + fill.repeat(Math.floor((width-strng.length)/2))
   }
   
