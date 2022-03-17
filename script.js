@@ -155,12 +155,10 @@ function battle(x, y) {
     for (let i = 0; i < x.length; i++){
         zo = x[i].toUpperCase()
         xSumma = xSumma + char[zo]
-        console.log(xSumma)
     }
-    for (let j = 0; j < x.length; j++){
-        zo = y[j].toUpperCase()  
+    for (let j = 0; j < y.length; j++){
+        zo = y[j].toUpperCase()
         ySumma = ySumma + char[zo]
-        console.log(ySumma)
     }
-    return xSumma === ySumma ? "Tie" : xSumma > ySumma? x : y
+    return xSumma === ySumma ? "Tie!" : xSumma > ySumma? x : y
   }
