@@ -162,3 +162,10 @@ function battle(x, y) {
     }
     return xSumma === ySumma ? "Tie!" : xSumma > ySumma? x : y
   }
+
+  function battle(x, y) {
+    let alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    let score = word => word.split('').reduce((acc,cur) => acc + alphabet.indexOf(cur), 0)
+    
+    return score(x) > score(y) ? x : score(x) < score(y) ? y : "Tie!"
+  }
