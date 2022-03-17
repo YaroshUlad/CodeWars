@@ -83,7 +83,7 @@ function findNb(m) {
     for (let n = 1; summa < m; n++) {
         int = n
         summa = summa + (int **= 3)
-        return summa === m ? n : summa > m ? -1
+        return summa === m ? n : summa > m ? -1 : 'toto'
     }
 }
 
@@ -93,5 +93,22 @@ It should remove all values from list a, which are present
 in list b keeping their order.*/
 
 function arrayDiff(a, b) {
-  
+    if (a === []) {
+        return b
+    }
+    if (b === []) {
+        return a
+    }
+    const arrayDif = []
+    for (let i in a) {
+        if (b.includes(a[i]) == false) {
+            arrayDif.push(a[i])
+        }
+    }
+    for (let j in b) {
+        if (a.includes(b[j]) === false && arrayDif.includes(b[j]) === false) {
+            arrayDif.push(b[j])
+        }
+    }
+    return arrayDif
 }
