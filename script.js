@@ -80,14 +80,9 @@ if such a n exists or -1 if there is no such n.
 function findNb(m) {
     let summa = 0
     let int = 0
-    for (var n = 1; summa < m; n++) {
+    for (let n = 1; summa < m; n++) {
         int = n
         summa = summa + (int **= 3)
-        if (summa === m) {
-            return n
-        }
-        if (summa > m) {
-            return -1
-        }
+        return summa === m ? n : summa > m ? -1
     }
 }
