@@ -179,7 +179,6 @@ function battle(x, y) {
   function duplicateEncode(word){
       const charArray = word.split("")
       let answerArray = []
-      console.log (charArray)
       mapFunction = (char) => {
           let counter = 0
           for (i in charArray) {
@@ -190,5 +189,5 @@ function battle(x, y) {
           return counter>1?")":"("
       }
       answerArray=charArray.map(mapFunction)
-      return answerArray
+      return answerArray.join('')
 }
