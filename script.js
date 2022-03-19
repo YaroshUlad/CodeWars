@@ -177,4 +177,18 @@ function battle(x, y) {
   Ignore capitalization when determining if a character is a duplicate. */
 
   function duplicateEncode(word){
+      const charArray = word.split("")
+      let answerArray = []
+      console.log (charArray)
+      mapFunction = (char) => {
+          let counter = 0
+          for (i in charArray) {
+              if (char === charArray[i]){
+                  counter+=1
+              }
+          }
+          return counter>1?")":"("
+      }
+      answerArray=charArray.map(mapFunction)
+      return answerArray
 }
