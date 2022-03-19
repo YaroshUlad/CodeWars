@@ -182,7 +182,7 @@ function battle(x, y) {
       mapFunction = (char) => {
           let counter = 0
           for (i in charArray) {
-              if (char === charArray[i]){
+              if (char.toUpperCase() === charArray[i].toUpperCase()){
                   counter+=1
               }
           }
