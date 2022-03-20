@@ -203,3 +203,15 @@ a width of w meters, a height of h meters. The standard width of the rolls
   to buy a length 15% greater than the one he needs.
 Last time he did these calculations he got a headache, so could you help John? */
 
+function wallpaper(l, w, h) {
+    numbers = ["zero", "one", "two", "three", "four",
+     "five", "six", "seven", "eight", "nine", "ten", 
+     "eleven", "twelve","thirteen", "fourteen", "fifteen",
+      "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+
+    if (l === 0 || w === 0 || h === 0) {
+        return numbers[0]
+    }
+    let answer = Math.round(((2*(l+w)/0.52)/(10/h))*1.15)
+    return numbers[answer]
+}
