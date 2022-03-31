@@ -23,7 +23,6 @@ If the final result is longer than 140 chars it must return false.
 If the input or the result is an empty string it must return false.*/
 
 
-
 /*
 function generateHashtag (str) {
     if(str==""){return false}
@@ -62,7 +61,7 @@ function center (strng, width, fill = ' ') {
   }
  */
 
-  
+
 /*
 
   Your task is to construct a building which will be a pile of n cubes.
@@ -122,74 +121,74 @@ If the powers are equal, it's a tie.*/
 
 function battle(x, y) {
     const char = {
-        A:1,
-        B:2,
-        C:3,
-        D:4,
-        E:5,
-        F:6,
-        G:7,
-        H:8,
-        I:9,
-        J:10,
-        K:11,
-        L:12,
-        M:13,
-        N:14,
-        O:15,
-        P:16,
-        Q:17,
-        R:18,
-        S:19,
-        T:20,
-        U:21,
-        V:22,
-        W:23,
-        X:24,
-        Y:25,
-        Z:26
+        A: 1,
+        B: 2,
+        C: 3,
+        D: 4,
+        E: 5,
+        F: 6,
+        G: 7,
+        H: 8,
+        I: 9,
+        J: 10,
+        K: 11,
+        L: 12,
+        M: 13,
+        N: 14,
+        O: 15,
+        P: 16,
+        Q: 17,
+        R: 18,
+        S: 19,
+        T: 20,
+        U: 21,
+        V: 22,
+        W: 23,
+        X: 24,
+        Y: 25,
+        Z: 26
     }
     let xSumma = 0
     let ySumma = 0
     let zo = "a"
-    for (let i = 0; i < x.length; i++){
+    for (let i = 0; i < x.length; i++) {
         zo = x[i].toUpperCase()
         xSumma = xSumma + char[zo]
     }
-    for (let j = 0; j < y.length; j++){
+    for (let j = 0; j < y.length; j++) {
         zo = y[j].toUpperCase()
         ySumma = ySumma + char[zo]
     }
-    return xSumma === ySumma ? "Tie!" : xSumma > ySumma? x : y
-  }
+    return xSumma === ySumma ? "Tie!" : xSumma > ySumma ? x : y
+}
 
-  function battle(x, y) {
+function battle(x, y) {
     let alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    let score = word => word.split('').reduce((acc,cur) => acc + alphabet.indexOf(cur), 0)
-    
+    let score = word => word.split('').reduce((acc, cur) => acc + alphabet.indexOf(cur), 0)
+
     return score(x) > score(y) ? x : score(x) < score(y) ? y : "Tie!"
-  }
+}
 
- /*The goal of this exercise is to convert a string 
- to a new string where each character in the new string 
- is "(" if that character appears only once in the original string, or ")" 
- if that character appears more than once in the original string.
-  Ignore capitalization when determining if a character is a duplicate. */
+/*The goal of this exercise is to convert a string
+to a new string where each character in the new string
+is "(" if that character appears only once in the original string, or ")"
+if that character appears more than once in the original string.
+ Ignore capitalization when determining if a character is a duplicate. */
 
-  function duplicateEncode(word){
-      const charArray = word.split("")
-      let answerArray = []
-      mapFunction = (char) => {
-          let counter = 0
-          for (i in charArray) {
-              if (char.toUpperCase() === charArray[i].toUpperCase()){
-                  counter+=1
-              }
-          }
-          return counter>1?")":"("
-      }
-      answerArray=charArray.map(mapFunction)
-      return answerArray.join('')
+function duplicateEncode(word) {
+    const charArray = word.split("")
+    let answerArray = []
+    mapFunction = (char) => {
+        let counter = 0
+        for (i in charArray) {
+            if (char.toUpperCase() === charArray[i].toUpperCase()) {
+                counter += 1
+            }
+        }
+        return counter > 1 ? ")" : "("
+    }
+    answerArray = charArray.map(mapFunction)
+    return answerArray.join('')
 }
 
 
@@ -204,14 +203,50 @@ a width of w meters, a height of h meters. The standard width of the rolls
 Last time he did these calculations he got a headache, so could you help John? */
 
 function wallpaper(l, w, h) {
-    numbers = ["zero", "one", "two", "three", "four",
-     "five", "six", "seven", "eight", "nine", "ten", 
-     "eleven", "twelve","thirteen", "fourteen", "fifteen",
-      "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+    let numbers = ["zero", "one", "two", "three", "four",
+        "five", "six", "seven", "eight", "nine", "ten",
+        "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+        "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
 
     if (l === 0 || w === 0 || h === 0) {
         return numbers[0]
     }
-    let answer = Math.round(((2*(l+w)/0.52)/(10/h))*1.15)
+    let answer = Math.round(((2 * (l + w) / 0.52) / (10 / h)) * 1.15)
     return numbers[answer]
+}
+
+/*
+Write a function to split a string and convert it into an array of words.*/
+function stringToArray(string) {
+    return string.split(' ')
+}
+
+
+/*
+My roommate and I occasionally make wagers on if
+    we can beat each other in Super Smash Bros.
+    Being the competitor I am,
+    I can't take a loss without getting a chance at redemption. ' +
+'Often times, this manifests in the form of a "Double or nothing" bet. ' +
+'Rather than paying up, the wager will instead be doubled, and an additional round will be played.
+...This consistently results in me losing more money than I initially wagered.
+    Given the amount of cash on hand, the initial wager,
+    and the number of rounds played, return the amount of money
+that I'll have left after our gam(bl)ing session has concluded.
+If I can't afford to pay up, return "I'll pay you back later" instead ;)
+*/
+
+function doubleOrNothing(cash, wager, losses){
+    let a = 1
+    let b = wager
+    while (a<losses){
+        a++
+        b=b*2
+    }
+    return cash - b
+}
+
+// Given an integral number, determine if it's a square number:
+let isSquare = function(n){
+    return Number.isInteger(Math.sqrt(n))?true:false
 }
