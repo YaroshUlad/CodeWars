@@ -236,17 +236,37 @@ that I'll have left after our gam(bl)ing session has concluded.
 If I can't afford to pay up, return "I'll pay you back later" instead ;)
 */
 
-function doubleOrNothing(cash, wager, losses){
+function doubleOrNothing(cash, wager, losses) {
     let a = 1
     let b = wager
-    while (a<losses){
+    while (a < losses) {
         a++
-        b=b*2
+        b = b * 2
     }
     return cash - b
 }
 
 // Given an integral number, determine if it's a square number:
-let isSquare = function(n){
-    return Number.isInteger(Math.sqrt(n))?true:false
+let isSquare = function (n) {
+    return Number.isInteger(Math.sqrt(n)) ? true : false
 }
+
+/*Create a method each_cons that accepts a list and a number n,
+ and returns cascading subsets of the list of size n, like so:*/
+function eachCons(array, n) {
+    const a = array.map(el => [el])
+    let answer =[]
+    for (let i in array) {
+        let z = i
+        while (a[i].length !== n) {
+            ++z
+            a[i].push(array[z])
+        }
+        if(a[i].includes(undefined)===false){
+            answer.push(a[i])
+        }
+    }
+    return answer
+}
+
+
