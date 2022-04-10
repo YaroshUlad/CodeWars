@@ -255,14 +255,14 @@ let isSquare = function (n) {
  and returns cascading subsets of the list of size n, like so:*/
 function eachCons(array, n) {
     const a = array.map(el => [el])
-    let answer =[]
+    let answer = []
     for (let i in array) {
         let z = i
         while (a[i].length !== n) {
             ++z
             a[i].push(array[z])
         }
-        if(a[i].includes(undefined)===false){
+        if (a[i].includes(undefined) === false) {
             answer.push(a[i])
         }
     }
@@ -273,8 +273,8 @@ function eachCons(array, n) {
     when the length of the circular arc A is given as the input.
     Return the result rounded to two decimals.*/
 
-function squareArea(A){
-return parseFloat(Math.pow(2*A/Math.PI,2).toFixed(2))
+function squareArea(A) {
+    return parseFloat(Math.pow(2 * A / Math.PI, 2).toFixed(2))
 }
 
 
@@ -302,10 +302,34 @@ function findMultiples(integer, limit) {
 
 const findMultiples = (i, l) => {
     let a = []
-    let b=i
-    while (b<=l){
+    let b = i
+    while (b <= l) {
         a.push(b)
-        b+=i
+        b += i
     }
     return a
 }
+
+/*Create a function that takes an array of letters, and combines them into words in a sentence.*/
+
+const arrAdder = (arr) => {
+    let resArr = []
+    const count = arr[0].length
+    for (let i = 0; i < count; i++) {
+            resArr[i] = arr.map(el => el[i]).filter(el => el !== '').join('')
+    }
+    return resArr.filter(el => el !== '').join(' ')
+}
+/*const arrrrrr = [
+    ['T', 'M', 'i', 't', 'p', 'o', 't', 'c'],
+    ['h', 'i', 's', 'h', 'o', 'f', 'h', 'e'],
+    ['e', 't', '', 'e', 'w', '', 'e', 'l'],
+    ['', 'o', '', '', 'e', '', '', 'l'],
+    ['', 'c', '', '', 'r', '', '', ''],
+    ['', 'h', '', '', 'h', '', '', ''],
+    ['', 'o', '', '', 'o', '', '', ''],
+    ['', 'n', '', '', 'u', '', '', ''],
+    ['', 'd', '', '', 's', '', '', ''],
+    ['', 'r', '', '', 'e', '', '', ''],
+    ['', 'i', '', '', '', '', '', ''],
+    ['', 'a', '', '', '', '', '', '']]*/
