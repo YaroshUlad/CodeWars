@@ -333,3 +333,12 @@ const arrAdder = (arr) => {
     ['', 'r', '', '', 'e', '', '', ''],
     ['', 'i', '', '', '', '', '', ''],
     ['', 'a', '', '', '', '', '', '']]*/
+
+/*Write the following function:
+function areaOfPolygonInsideCircle(circleRadius, numberOfSides)*/
+
+const areaOfPolygonInsideCircle = (circleRadius, numberOfSides) => {
+    const area = (numberOfSides*Math.pow(circleRadius,2)*Math.sin((2*Math.PI)/numberOfSides))/2
+    return parseFloat(area.toFixed(3))
+}
+
