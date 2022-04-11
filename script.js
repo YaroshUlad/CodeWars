@@ -316,7 +316,7 @@ const arrAdder = (arr) => {
     let resArr = []
     const count = arr[0].length
     for (let i = 0; i < count; i++) {
-            resArr[i] = arr.map(el => el[i]).filter(el => el !== '').join('')
+        resArr[i] = arr.map(el => el[i]).filter(el => el !== '').join('')
     }
     return resArr.filter(el => el !== '').join(' ')
 }
@@ -338,7 +338,23 @@ const arrAdder = (arr) => {
 function areaOfPolygonInsideCircle(circleRadius, numberOfSides)*/
 
 const areaOfPolygonInsideCircle = (circleRadius, numberOfSides) => {
-    const area = (numberOfSides*Math.pow(circleRadius,2)*Math.sin((2*Math.PI)/numberOfSides))/2
+    const area = (numberOfSides * Math.pow(circleRadius, 2) * Math.sin((2 * Math.PI) / numberOfSides)) / 2
     return parseFloat(area.toFixed(3))
 }
 
+
+/*IPv4 to int32*/
+
+function ipToInt32(ip) {
+    let arr = ip.split('.').map(el => Number(el).toString(2))
+    arr = arr.map(el => {
+        if (el.length < 8) {
+            let n = Array(8 - el.length).fill('0').join('')
+            el = n.concat(el)
+        }
+        return el
+    })
+    return parseInt(arr.join(''), 2)
+}
+
+//console.log(ipToInt32('128.32.10.1'))
