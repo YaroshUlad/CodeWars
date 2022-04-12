@@ -358,3 +358,78 @@ function ipToInt32(ip) {
 }
 
 //console.log(ipToInt32('128.32.10.1'))
+
+/*Given an n x n array, return the array elements arranged from outermost elements
+to the middle element, traveling clockwise.*/
+snail = function (array) {
+    let copy = [...array]
+    if (array.length === 1){
+        return array[0]
+    }
+    let res = []
+    let count = Math.pow(array.length, 2)
+    while (count > 0) {
+        //____________________from left to right _________________
+
+        if (count===0){
+            break
+        }
+        let a = copy[0].length
+        res = [...res, ...copy.shift()]
+        count -= a
+        //_______________________from up to down_____________
+
+        if (count===0){
+            break
+        }
+        copy.map(el => {
+            res = [...res, el.pop()]
+            return el
+        })
+        count -= copy.length
+
+        //_________________________from right to left_________
+
+        if (count===0){
+            break
+        }
+        let b = copy[copy.length-1].reverse()
+        res = [...res, ...b]
+        count -= copy[copy.length - 1].length
+        copy.pop()
+
+        //__________________________ from down to up ____________
+
+        if (count===0){
+            break
+        }
+        copy.reverse().map(el => {
+            res = [...res, el[0]]
+            el.shift()
+            count-=1
+            return el
+        })
+        copy.reverse()
+    }
+    return res
+}
+/*let a = [[1, 2, 3, 4, 5, 6],
+    [20, 21, 22, 23, 24, 7],
+    [19, 32, 33, 34, 25, 8],
+    [18, 31, 36, 35, 26, 9],
+    [17, 30, 29, 28, 27, 10],
+    [16, 15, 14, 13, 12, 11]]*/
+/*[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]*/
+
+
+/*let a = [[1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15],
+    [16, 17, 18, 19, 20],
+    [21, 22, 23, 24, 25]]*/
+//[1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13]
+
+
+/*let a = [[1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]]*/
