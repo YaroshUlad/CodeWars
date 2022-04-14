@@ -363,7 +363,7 @@ function ipToInt32(ip) {
 to the middle element, traveling clockwise.*/
 snail = function (array) {
     let copy = [...array]
-    if (array.length === 1){
+    if (array.length === 1) {
         return array[0]
     }
     let res = []
@@ -371,7 +371,7 @@ snail = function (array) {
     while (count > 0) {
         //____________________from left to right _________________
 
-        if (count===0){
+        if (count === 0) {
             break
         }
         let a = copy[0].length
@@ -379,7 +379,7 @@ snail = function (array) {
         count -= a
         //_______________________from up to down_____________
 
-        if (count===0){
+        if (count === 0) {
             break
         }
         copy.map(el => {
@@ -390,23 +390,23 @@ snail = function (array) {
 
         //_________________________from right to left_________
 
-        if (count===0){
+        if (count === 0) {
             break
         }
-        let b = copy[copy.length-1].reverse()
+        let b = copy[copy.length - 1].reverse()
         res = [...res, ...b]
         count -= copy[copy.length - 1].length
         copy.pop()
 
         //__________________________ from down to up ____________
 
-        if (count===0){
+        if (count === 0) {
             break
         }
         copy.reverse().map(el => {
             res = [...res, el[0]]
             el.shift()
-            count-=1
+            count -= 1
             return el
         })
         copy.reverse()
@@ -433,3 +433,32 @@ snail = function (array) {
 /*let a = [[1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]]*/
+
+/* If we list all the natural numbers below 10 that are multiples of 3 or 5,
+we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Finish the solution so that it returns the sum of all the multiples
+ of 3 or 5 below the number passed in. Additionally,
+ if the number is negative, return 0 (for languages that do have them).
+Note: If the number is a multiple of both 3 and 5, only count it once.*/
+
+const solution = (n) => {
+    if (n <= 0) {
+        return 0
+    }
+    let ans = []
+    for (let i = 1; i < n; i++) {
+        let multiple3 = Number.isInteger(i / 3)
+        let multiple5 = Number.isInteger(i / 5)
+        if (multiple5 === true) {
+            ans.push(i)
+        }
+        if (multiple3 === true) {
+            ans.push(i)
+        }
+        if (multiple3 === true && multiple5 === true) {
+            ans.pop()
+        }
+    }
+    return ans.reduce((pr, cur) => pr + cur, 0)
+}
+console.log(solution(10))
