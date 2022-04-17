@@ -569,3 +569,67 @@ function to_nato(words) {
 
 /*
 console.log(to_nato('If you can read?'))*/
+
+/* Given a Sudoku data structure with size NxN, N > 0 and √N == integer,
+write a method to validate if it has been filled out correctly.*/
+
+const Sudoku = function (data) {
+    const rawIsValid = (arr) => {
+        let ans = Array(arr.length)
+        let checkRawArray = Array(data.length).fill(0).map((el, index) => {
+            el = index + 1;
+            return el
+        })
+        arr.map(el => {
+            ans[el - 1] = el;
+            return el;
+        })
+        for (let i in checkRawArray) {
+            if (checkRawArray[i] !== ans[i]) {
+                errorCount += 1
+                return false
+            }
+        }
+        return true
+    }
+    let errorCount = 0
+    //_____________________ Validate Raws___________________
+    let validateRaws = []
+    validateRaws = data.map(el => {
+        el = rawIsValid(el);
+        return el
+    })
+    if (errorCount > 0) {
+        return false
+    }
+    //_______________________Validate Columns_______________
+    for (let i in data) {
+        let validateColumns = data.map(el => {
+            el = el[i];
+            return el
+        })
+        rawIsValid(validateColumns)
+        if (errorCount > 0) {
+            return false
+        }
+    }
+    //______________________ Validate Little squares___________
+    let littleSquares = (arr) => {
+        let lengthLittleSquare = Math.sqrt(arr.length)
+        for (let i = 0; i < arr.length; i += lengthLittleSquare) {
+            for (let k = 0; k < arr.length; k += lengthLittleSquare) {
+                let litArr = []
+                /*console.log(litArr)*/
+                for (let j = i; j < i + lengthLittleSquare; j++) {
+                    //console.log('strings ' + j)
+                    for (let n = k; n < k + lengthLittleSquare; n++) {
+                        litArr.push(arr[j][n])
+                    }
+                }
+                rawIsValid(litArr)
+            }
+        }
+    }
+    littleSquares(data)
+    return  !(errorCount > 0)
+};
