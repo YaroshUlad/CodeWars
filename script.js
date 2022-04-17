@@ -461,4 +461,111 @@ const solution = (n) => {
     }
     return ans.reduce((pr, cur) => pr + cur, 0)
 }
-console.log(solution(10))
+
+
+/*Your task in order to complete this Kata is to write a function which formats a duration,
+given as a number of seconds, in a human-friendly way.
+The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise,
+the duration is expressed as a combination of years, days, hours, minutes and seconds. */
+
+function formatDuration(seconds) {
+    if (seconds === 0) {
+        return 'now'
+    }
+    let sec = seconds
+    let ans = []
+    if (sec > (3600 * 24 * 365) - 1) {
+        let years = Math.floor(sec / (3600 * 24 * 365))
+        if (years > 1) {
+            ans.push(years + ' years')
+        } else {
+            ans.push(years + ' year')
+        }
+        sec -= years * (3600 * 24 * 365)
+    }
+    if (sec > 86399) {
+        let days = Math.floor(sec / (3600 * 24))
+        if (days > 1) {
+            ans.push(days + ' days')
+        } else {
+            ans.push(days + ' day')
+        }
+        sec -= days * (3600 * 24)
+    }
+    if (sec > 3599) {
+        let hours = Math.floor(sec / 3600)
+        if (hours > 1) {
+            ans.push(hours + ' hours')
+        } else {
+            ans.push(hours + ' hour')
+        }
+        sec -= hours * (3600)
+    }
+    if (sec > 59) {
+        let minutes = Math.floor(sec / 60)
+        if (minutes > 1) {
+            ans.push(minutes + ' minutes')
+        } else {
+            ans.push(minutes + ' minute')
+        }
+        sec -= minutes * 60
+    }
+    if (sec < 60) {
+        if (sec > 1) {
+            ans.push(sec + ' seconds')
+        } else if (sec > 0) {
+            ans.push(sec + ' second')
+        }
+    }
+    let answer = ans.join(', ').split('')
+    answer[answer.lastIndexOf(',')] = ' and'
+    return answer.join('')
+}
+
+//console.log(formatDuration(3662))
+
+/*You'll have to translate a string to Pilot's alphabet (NATO phonetic alphabet). */
+
+
+function to_nato(words) {
+    const natoAlphabet = {
+        A: 'Alfa',
+        B: 'Bravo',
+        C: 'Charlie',
+        D: 'Delta',
+        E: 'Echo',
+        F: 'Foxtrot',
+        G: 'Golf',
+        H: 'Hotel',
+        I: 'India',
+        J: 'Juliett',
+        K: 'Kilo',
+        L: 'Lima',
+        M: 'Mike',
+        N: 'November',
+        O: 'Oscar',
+        P: 'Papa',
+        Q: 'Quebec',
+        R: 'Romeo',
+        S: 'Sierra',
+        T: 'Tango',
+        U: 'Uniform',
+        V: 'Victor',
+        W: 'Whiskey',
+        X: 'Xray',
+        Y: 'Yankee',
+        Z: 'Zulu'
+    }
+    let ans = words.split(' ').join('').toUpperCase().split('')
+
+    return ans.map(el => {
+        if (el !== ',' && el !== '.' && el !== '!' && el !== '?') {
+            return natoAlphabet[el]
+        } else {
+            return el
+        }
+    }).join(' ')
+}
+
+/*
+console.log(to_nato('If you can read?'))*/
